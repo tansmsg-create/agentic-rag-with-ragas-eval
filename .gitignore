@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Vector store (rebuild via scripts/ingest.py rather than versioning)
+data/chroma/
+data/eval_results.csv
+
+# OS
+.DS_Store
+
+# Environment
+.env
+
+# Archive artifact
+rag-project.zip

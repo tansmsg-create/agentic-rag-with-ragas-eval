@@ -1,0 +1,11 @@
+langchain
+langchain-community==0.4.1  # pinned: 0.4.2 drops chat_models.vertexai, which ragas imports eagerly and fails on
+langchain-chroma
+chromadb
+streamlit
+ollama
+cohere
+ragas
+langchain-google-genai
+langchain-anthropic  # judge LLM for scripts/evaluate.py — see CLAUDE.md "Deviation from spec"
+python-dotenv
