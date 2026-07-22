@@ -9,10 +9,15 @@ Ask a question like *"What should I do if I suspect a policy violation?"* and it
 ```mermaid
 flowchart LR
     Q[User question] --> E[Embed\nnomic-embed-text]
+    TQ[Test questions] -.-> E
     E --> R[Chroma similarity search\ntop-k]
     R --> RR[Cohere Rerank\ntop-n]
     RR --> G[Generate\nllama3.2]
     G --> A[Answer + sources]
+    A -.-> RAGAS[RAGAS scoring\njudge: claude-haiku-4-5]
+    REF[Reference answers] -.-> RAGAS
+    RAGAS --> METRICS[faithfulness · answer relevancy\ncontext precision · context recall]
+    METRICS --> CSV[(eval_results.csv)]
 
     DOCS[(7 policy .md files)] --> C[Chunk on section headers]
     C --> EMB[Embed & index]
